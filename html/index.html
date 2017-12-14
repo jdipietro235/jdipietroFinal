@@ -1,0 +1,193 @@
+<html>
+<head>
+<title>CSC 589 Final Project</title>
+<link href='http://fonts.googleapis.com/css?family=Nunito:300|Crimson+Text|Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" title="Default" href="styles/github.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>  
+
+<link rel="stylesheet" href="highlighting/styles/default.css">
+<script src="highlighting/highlight.pack.js"></script>
+
+<style type="text/css">
+body {
+	margin: 0px;
+	width: 100%;
+	font-family: 'Crimson Text', serif;
+	font-size: 20px;
+	background: #fcfcfc;
+}
+h1 {
+	font-family: 'Nunito', sans-serif;
+	font-weight: normal;
+	font-size: 28px;
+	margin: 25px 0px 0px 0px;
+	text-transform: lowercase;
+
+}
+
+h2 {
+	font-family: 'Nunito', sans-serif;
+	font-weight: normal;
+	font-size: 32px;
+	margin: 15px 0px 35px 0px;
+	color: #333;	
+	word-spacing: 3px;
+}
+
+h3 {
+	font-family: 'Nunito', sans-serif;
+	font-weight: normal;
+	font-size: 26px;
+	margin: 10px 0px 10px 0px;
+	color: #333;
+	word-spacing: 2px;
+}
+h4 {
+	font-family: 'Nunito', sans-serif;
+	font-weight: normal;
+	font-size: 22px;
+	margin: 10px 0px 10px 0px;
+	color: #333;
+	word-spacing: 2px;
+}
+
+h5 {
+	font-family: 'Nunito', sans-serif;
+	font-weight: normal;
+	font-size: 18px;
+	margin: 10px 0px 10px 0px;
+	color: #111;
+	word-spacing: 2px;
+}
+
+p, li {
+	color: #444;
+}
+
+a {
+	color: #DE3737;
+}
+
+.container {
+	margin: 0px auto 0px auto;
+	width: 960px;
+}
+
+#header {
+	background: #333;
+	width: 100%;
+}
+
+#headersub {
+	color: #ccc;
+	width: 960px;
+	margin: 0px auto 0px auto;
+	padding: 20px 0px 20px 0px;
+}
+
+.chart {
+	width: 480px;
+}
+.lol {
+	font-size: 16px;
+	color: #888;
+	font-style: italic;
+}
+.sep {
+	height: 1px;
+	width: 100%;
+	background: #999;
+	margin: 20px 0px 20px 0px;
+}
+.footer{
+	font-size: 16px;
+}
+.latex {
+	width: 100%;
+}
+
+.latex img {
+	display: block;
+	margin: 0px auto 0px auto;
+}
+
+pre {
+	font-family: 'Droid Sans Mono';
+	font-size: 14px;
+}
+
+td img {
+  vertical-align: middle;
+}
+
+#contents a {
+}
+</style>
+<script type="text/javascript">
+    hljs.initHighlightingOnLoad();
+</script>
+</head>
+<body>
+<div id="header" >
+<div id="headersub">
+<h1>Justin DiPietro <span style="color: #DE3737">(CSC-589-001)</span></h1>
+</div>
+</div>
+<div class="container">
+
+<h2>CSC 589 / Final Project / Machine Learning</h2>
+
+<div style="float: right; padding: 20px">
+	<img src="data/hot-dog.jpg" width="70%"/>
+	<p style="font-size: 14px">Hotdog predicted correctly</p>
+</div>
+
+<p> 	Set the train_layers = ['fc2', 'fc1']</p>
+
+<p> 	Machine learning is an amazing, if sometimes opaque tool. The tool here was able to consistently very accurately identify different images. I tried doing training using a small set of food and dog picutures together</p>
+
+<p> 	I had some early success, but without warning I lost access to the tensorflow library. I searched for a solution, but found none. I have included here the error report and the results I was able to achieve. I appologize for the late submission, but I really wanted to find a solution and that took a long time.</p>
+
+
+<div style="clear:both">
+<h3>Process</h3>
+
+<ol>
+<li>Get mean color values of imagenet dataset</li>
+<li>Load images to be classified</li>
+<li>Load in weights</li>
+<li>Calculate probability</li>
+</ol>
+
+
+<h2>Experiementation</h2>
+I tried to experiment with the code as much as possible to find which variables affected which results. The experimentation was all inside of the finetune.py code. The first thing I did was change the training layers from 'fc7' and 'fc8' to 'fc1' and 'fc2'. Then I adjusted the dropout rate to 0.25. Both of these changes resulted in decreased accuracy. Then I tried upping the learning rate to .07 and the number of epochs to 20. This made the system more accurate. I could not experiment further from there because of the problem with the tensorflow library.<p>
+
+
+
+<h3>Images</h3>
+
+<table border=1>
+<tr>
+<td>
+<img src="data/newError.jpg" width="78%"/>
+<img src="data/6-Hotdog-Groundhogs_taxszc.jpg" width="24%"/>
+</td>
+</tr>
+
+<tr>
+<td>
+<img src="data/healthy-hotdog.jpg" width="24%"/>
+<img src="data/maxresdefault.jpg" width="24%"/>
+<img src="data/puppy-0.jpg" width="24%"/>
+<img src="data/puppy-3.jpg" width="24%"/>
+</td>
+</tr>
+
+</table>
+
+<div style="clear:both" >
+<p> 	This project was engaging for the time I was able to put into it. I still am unsure why tensorflow isn't working. I tried reinstalling both it and Anaconda3. Neither fix worked. If I was able to, I would have increased the learning rate to the point that the system became over-fitted to the test images that I was using. Then I would have started training it using an entirely different set of images. I think that overfitting is one of the most interesting parts of machine learning, and I'd like to have the opportunity to understand how it works. In a context like this, with images, its easy to tell if overfitting is happening because all of the features of the data are obvious and visible. Training becomes more interesting when patterns in training data are obscured, like in the case of diagnosing illness. A large group of cancer patients might also be drinking contaminated water, so a machine learning system trained on them as a dataset is actually being trained to recognize cancer patiets who drink bad water, which is not the system's intent. </p>
+</div>
+</body>
+</html>
